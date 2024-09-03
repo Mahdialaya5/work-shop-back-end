@@ -1,6 +1,6 @@
 
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -8,7 +8,9 @@ import ProfilPage from "./pages/ProfilPage";
 import { useDispatch } from "react-redux";
 import { GetProducts } from "./redux/actions/ActionProduct";
 import { useEffect } from "react";
-import AddProduct from "./components/AddProduct/AddProduct";
+import Addproduct from "./pages/AddProduct";
+import Editproduct from "./pages/EditProduct";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
  
@@ -24,7 +26,9 @@ function App() {
       <Route path="/register"  element={<Register/>}  />
       <Route path="/login"  element={<Login/>} />
       <Route path="/profil"  element={<ProfilPage/>} />
-      <Route path="/addproduct"  element={<AddProduct/>} />
+      <Route path="/addproduct"  element={<Addproduct/>} />
+      <Route path="/edit/:id"  element={<Editproduct/>} />
+      <Route path='*'  element={<Home/>}     />
     </Routes>
   );
 }

@@ -7,7 +7,7 @@ function ProductList() {
 
   
   const data=useSelector(state=>state.ProductReducer.products)
-  console.log(data);
+  
   return (
     <div className={style.cards}   >
   {data&&data.map((el)=>  <Product  key={el._id} el={el}  />) }

@@ -1,9 +1,12 @@
 import React from 'react'
+import AddProduct from '../components/AddProduct/AddProduct'
 
-function AddProduct() {
+function Addproduct() {
   return (
-    <div>AddProduct</div>
+    <>
+    <AddProduct/>
+    </>
   )
 }
 
-export default AddProduct
+export default Addproduct
