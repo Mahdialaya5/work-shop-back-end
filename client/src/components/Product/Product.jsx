@@ -5,7 +5,7 @@ import { deleteProduct, GetOneProduct } from "../../redux/actions/ActionProduct"
 import { useDispatch } from "react-redux";
 
 function Product({el}) {
-   console.log(el);
+  
   const navigate=useNavigate()
   const disptach=useDispatch()
   return (

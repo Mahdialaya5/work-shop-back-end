@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import style from './Register.module.css'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../../redux/actions/ActionUser'
 
 function RegisterUser() {
+  const errors=useSelector(state=>state.UserReducer.errors)
+
   const dispatch=useDispatch()
   const navigate=useNavigate()
  const [username, setusername] = useState('')
@@ -26,7 +28,7 @@ function RegisterUser() {
      <label>password</label>
      <input className={style.input} type='password' onChange={(e)=>setpassword(e.target.value)}   />
     <button className={style.btn} type='submit' >submit</button>
-
+   {errors[0]&&errors[0].msg ? <p>{errors[0].msg}</p>:null}
     </form>
   )
 }

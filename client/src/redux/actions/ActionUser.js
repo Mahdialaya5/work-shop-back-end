@@ -1,33 +1,35 @@
 import axios from "axios";
-import { LOGIN, REGISTER, REGISTERFAILED } from "../const/user"
+import { LOGIN, LOGINFAILED, REGISTER, REGISTERFAILED } from "../const/user"
 
 export const register = (body,navigate) => async (dispatch) => {
     try {
       const res= await axios.post('http://localhost:4000/api/user/register',body)
-      console.log(res.data);
+      console.log(res.data)
       dispatch({
           type:REGISTER,
           payload:res.data
       })
-      navigate('/profil')
+      navigate('/login')
     } catch (error) {
         dispatch({
             type:REGISTERFAILED,
-            payload:error
+            payload:error.response.data.errors
         })
-       console.log(error);
-  
+
   }}
 
-  export const login= (body,navigate) => async (dispatch) => {
+export const login= (body,navigate) => async (dispatch) => {
     try {
-      const res= await axios.post('http://localhost:4000/api/user/register',body)
+      const res= await axios.post('http://localhost:4000/api/user/login',body)
       dispatch({
           type:LOGIN,
           payload:res.data
       })
-     
+     navigate('/profil')
     } catch (error) {
-       console.log(error);
-  
+      dispatch({
+        type:LOGINFAILED,
+        payload:error.response.data
+    })
+     console.log(error.response.data);
   }} 

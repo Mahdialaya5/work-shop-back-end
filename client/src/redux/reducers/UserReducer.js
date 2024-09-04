@@ -1,7 +1,8 @@
-import { REGISTER, REGISTERFAILED } from "../const/user";
+import { LOGINFAILED, REGISTER, REGISTERFAILED } from "../const/user";
 
 const intialstate={
     currentuser:{},
+    errors:[],
     error:{}
 }
 
@@ -11,7 +12,9 @@ export const UserReducer=(state=intialstate,action)=>{
     case REGISTER:
           return {...state,currentuser:action.payload}
     case REGISTERFAILED:   
-    return {...state,error:action.payload}
+         return {...state,errors:action.payload}
+    case LOGINFAILED:
+        return {...state,error:action.payload}
     default:
         return state
  }

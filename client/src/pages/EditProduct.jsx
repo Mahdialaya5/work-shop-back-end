@@ -13,7 +13,7 @@ function Editproduct() {
    const [description, setDescription] = useState(product.description)
    const [price, setprice] = useState(product.price)
     const [img, setimg] = useState();
-    
+    const [category, setcategory] = useState(product.category)
     
     const handlesubmit = (e) => {
    
@@ -23,9 +23,9 @@ function Editproduct() {
       data.append("description",description)
       data.append('price',price)
       data.append('file',img)
-
-      disptach(editProduct(product._id,data,navigate))
-    };
+      data.append('category',category)
+    disptach(editProduct(product._id,data,navigate))
+    }
   
     return (
       <form onSubmit={handlesubmit}>
@@ -35,10 +35,15 @@ function Editproduct() {
         <input onChange={(e)=>setDescription(e.target.value)} placeholder={product.description}   />
         <label>price</label>
         <input type="number" onChange={(e)=>setprice(e.target.value)}  placeholder={product.price}/>
+      <select defaultValue={product.category}   onChange={(e)=>setcategory(e.target.value)} >
+        <option value='pc'  >pc</option>
+        <option value='mobile'  >m</option>
+        <option  value='tablette'  >tablette</option>
+      </select>
         <label>photo</label>
         <input type="file" onChange={(e) => setimg(e.target.files[0])} />
       
-        <button type="submit"   >save</button>
+        <button type="submit">save</button>
       </form>
     );
   }

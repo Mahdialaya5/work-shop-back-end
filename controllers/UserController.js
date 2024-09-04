@@ -10,8 +10,8 @@ exports.register=async(req,res)=>{
         }
         const emailexist= await user.findOne({email:email})
         if (emailexist) {
-            return res.send({msg:"email exist please login"})
-        }
+            return res.status(400).send({msg:"email exist please login"})
+         }
         let passwordhashed=await bcrypt.hash(password,10)
           req.body.password=passwordhashed
           const newuser = new user(req.body);
@@ -20,10 +20,8 @@ exports.register=async(req,res)=>{
     return res.status(201).send({msg:"register succes"})
 
     } catch (error) {
-        console.log(error);
-    }
-
-}
+        console.log(error)
+    }}
 
 exports.login=async(req,res)=>{
     

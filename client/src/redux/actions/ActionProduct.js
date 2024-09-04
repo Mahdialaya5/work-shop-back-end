@@ -1,6 +1,7 @@
 import axios from "axios"
 import { ADDPRODUCT, DELETEPRODUCT, EDITPRODUCT, GETONEPRODUCT, GETPRODUCTS } from "../const/products";
 
+
 export const GetProducts = () => async (dispatch) => {
   try {
     
@@ -36,7 +37,7 @@ export const GetOneProduct=(data,navigate)=>{
 
 }
 
-  export const editProduct = (id,data,navigate) => async (dispatch) => {
+export const editProduct = (id,data,navigate) => async (dispatch) => {
     try {
       const res= await axios.patch(`http://localhost:4000/api/product/${id}`,data)
       dispatch({
@@ -49,8 +50,7 @@ export const GetOneProduct=(data,navigate)=>{
     } catch (error) {
        console.log(error);
   
-  }}
-
+}}
 
 export const deleteProduct = (id) => async (dispatch) => {
     try {
