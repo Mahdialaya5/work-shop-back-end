@@ -10,8 +10,7 @@ const Admincontroller=require('../controllers/Admincontroller')
 router.post('/register',registerCheck(),validator,usercontroller.register)
 router.post('/login',loginCheck(),validator,usercontroller.login)
 
-// get current user =>
-router.get('/',isAuth(),usercontroller.current)
+router.get('/',isAuth(),usercontroller.current)// get current user 
 
 router.patch('/:id',isAuth(),usercontroller.updateuser)
 router.patch('/newpassword/:id',isAuth(),usercontroller.updatepassword)

@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import Addproduct from "./pages/AddProduct";
 import Editproduct from "./pages/EditProduct";
 import NotFound from "./components/NotFound/NotFound";
+import { getCurrent } from "./redux/actions/ActionUser";
 
 function App() {
  
@@ -18,8 +19,12 @@ function App() {
 
  useEffect(() => {
     dispatch(GetProducts())
+    
   }, [])
-  
+
+
+
+ 
   return (
     <Routes>
       <Route path="/"  element={<Home/>} />

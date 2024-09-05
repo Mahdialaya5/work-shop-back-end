@@ -40,8 +40,9 @@ exports.login=async(req,res)=>{
         const token = jwt.sign(payload, process.env.secretKey,{ expiresIn: '1h' })
 
           existUser.password=undefined
-       res.cookie('token',token)
-      return res.send({user:existUser}) 
+
+       // res.cookie('token',token)
+     return res.send({user:existUser,token:token}) 
   
     } catch (error) {
         console.log(error)   
@@ -55,6 +56,7 @@ exports.current= (req, res) => {
       console.log(error);
       }
     }
+
 exports.updateuser=async(req,res)=>{
     try {
          const result=await user.findByIdAndUpdate(req.params.id,req.body,{ new: true })

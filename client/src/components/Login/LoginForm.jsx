@@ -11,12 +11,10 @@ function LoginForm() {
  const disptach=useDispatch()
  const navigate=useNavigate()
  const error=useSelector(state=>state.UserReducer.error)
-   console.log(error);
+ 
  const handlesubmit=(e)=>{
   e.preventDefault()
   disptach(login({email,password},navigate))
-
-
  }
 
   return (

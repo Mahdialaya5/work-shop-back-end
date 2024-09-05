@@ -1,8 +1,19 @@
 import React from "react";
 import style from "./Navbar.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
+
+  const navigate=useNavigate()
+
+const logout=()=>{
+
+   document.cookie="token= "
+  if (window.location.pathname!=='/') {
+    navigate('/')
+  }
+}
+
   return (
     <nav className={style.nav}>
       <ul className={style.list}>
@@ -17,6 +28,9 @@ function Navbar() {
         </li>
         <li>
          <Link to='/profil' > <button className={style.btn}> profil</button> </Link>
+        </li>
+        <li>
+         <button className={style.btn} onClick={logout}  > logout</button> 
         </li>
       </ul>
     </nav>
