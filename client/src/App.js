@@ -12,6 +12,9 @@ import Addproduct from "./pages/AddProduct";
 import Editproduct from "./pages/EditProduct";
 import NotFound from "./components/NotFound/NotFound";
 import { getCurrent } from "./redux/actions/ActionUser";
+import UserRoute from "./privateRoutes/UserRoute";
+import AdminRoute from "./privateRoutes/AdminRoute";
+import Admin from "./pages/Admin";
 
 function App() {
  
@@ -19,7 +22,7 @@ function App() {
 
  useEffect(() => {
     dispatch(GetProducts())
-    
+
   }, [])
 
 
@@ -30,10 +33,11 @@ function App() {
       <Route path="/"  element={<Home/>} />
       <Route path="/register"  element={<Register/>}  />
       <Route path="/login"  element={<Login/>} />
-      <Route path="/profil"  element={<ProfilPage/>} />
-      <Route path="/addproduct"  element={<Addproduct/>} />
-      <Route path="/edit/:id"  element={<Editproduct/>} />
-      <Route path='*'  element={<Home/>}     />
+      <Route path="/profil"  element={<UserRoute><ProfilPage/></UserRoute>} />
+      <Route path="/addproduct"  element={<UserRoute><Addproduct/></UserRoute>} />
+      <Route path="/edit/:id"  element={ <UserRoute><Editproduct/></UserRoute> } />
+      <Route path="/admin"  element={ <AdminRoute><Admin/></AdminRoute> } />
+      <Route path='*'  element={<Home/>} />
     </Routes>
   );
 }

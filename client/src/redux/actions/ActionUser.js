@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_CURRENT_FAIL, GET_CURRENT_SUCCESS, LOGIN, LOGINFAILED, REGISTER, REGISTERFAILED } from "../const/user"
+import { GET_CURRENT_FAIL, GET_CURRENT_SUCCESS, LOGINFAILED, REGISTER, REGISTERFAILED } from "../const/user"
 
 export const register = (body,navigate) => async (dispatch) => {
     try {
@@ -18,10 +18,12 @@ export const register = (body,navigate) => async (dispatch) => {
 
 export const login= (body,navigate) => async (dispatch) => {
     try {
-      const res= await axios.post('http://localhost:4000/api/user/login',body)
-
-      document.cookie=`token=${res.data.token}`
+      const res= await axios.post('http://localhost:4000/api/user/login',body,{ 
+        withCredentials: true 
+     })
+   
      navigate('/profil')
+     
     } catch (error) {
       dispatch({
         type:LOGINFAILED,
@@ -34,7 +36,7 @@ export const login= (body,navigate) => async (dispatch) => {
   const token=document.cookie.split('=')[1]
 
   try {
-     const res = await axios.get('http://localhost:4000/api/user/', { headers: { Authorization: `Bearer ${token}` } })
+    const res = await axios.get('http://localhost:4000/api/user/', { headers: { Authorization: `Bearer ${token}` } })
       dispatch({ type: GET_CURRENT_SUCCESS, payload: res.data })
       
   } catch (error) {

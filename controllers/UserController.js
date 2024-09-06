@@ -40,9 +40,10 @@ exports.login=async(req,res)=>{
         const token = jwt.sign(payload, process.env.secretKey,{ expiresIn: '1h' })
 
           existUser.password=undefined
-
-       // res.cookie('token',token)
-     return res.send({user:existUser,token:token}) 
+        
+         
+           res.cookie('token',token)
+     return res.send({user:existUser}) 
   
     } catch (error) {
         console.log(error)   

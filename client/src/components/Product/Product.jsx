@@ -6,8 +6,7 @@ import { useDispatch } from "react-redux";
 
 function Product({el}) {
   
-  const navigate=useNavigate()
-  const disptach=useDispatch()
+
   return (
     <div className={style.card}>
       <img src={el.img}  className={style.img}  />
@@ -17,8 +16,7 @@ function Product({el}) {
         <p>price:{el.price}</p>
         <p>category:{el.category}</p>
         <p>date:{el.date.slice(0,10)}</p>
-        <button  onClick={()=>disptach(deleteProduct(el._id))} >delete</button>
-      <button onClick={()=>disptach(GetOneProduct(el,navigate))}  >Edit</button>
+
       </div>
     </div>
   );
