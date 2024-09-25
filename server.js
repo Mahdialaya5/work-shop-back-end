@@ -9,20 +9,16 @@ const cors = require("cors");
 var cookieParser = require('cookie-parser')
 
 
-app.use((req, res, next) => {
-   res.set({
-       "Access-Control-Allow-Origin": "*",
-       "Access-Control-Allow-Methods": "*",
-       "Access-Control-Allow-Headers": "'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token'",
-   });
-
-   next();
-});
+const corsOptions = {
+   origin: '*',  
+ 
+   credentials: true,      
+}
 
 
 connectdb()
 app.use(cookieParser())
-app.use(cors(corsOptions))
+//app.use(cors(corsOptions))
 app.use(express.json())
 app.use("/uploads",express.static(__dirname+"/uploads"))
 
