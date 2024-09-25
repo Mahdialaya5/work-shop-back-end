@@ -10,7 +10,7 @@ var cookieParser = require('cookie-parser')
 
 
 const corsOptions = {
-   origin: 'http://localhost:3000',  
+   origin: 'https://front-app-beta.vercel.app/',  
    credentials: true,      
 }
 
@@ -25,9 +25,9 @@ app.use("/uploads",express.static(__dirname+"/uploads"))
 app.use('/api/user',RoutesUser)
 app.use('/api/product',RoutesProduct)
 
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
    res.sendFile(path.join(__dirname, './client/build/index.html'));
- });
+ }); ki ibda mern kamil */
  
 app.use(function(req, res, ){
    res.status(404).send('not found!')})
