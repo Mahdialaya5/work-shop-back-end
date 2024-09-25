@@ -8,12 +8,22 @@ const RoutesProduct=require('./Routes/RoutesProduct')
 const cors = require("cors");
 var cookieParser = require('cookie-parser')
 
-
 const corsOptions = {
-   origin: '*',  
- 
-   credentials: true,      
-}
+   origin: 'https://front-app-beta.vercel.app/', // Frontend
+   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+   allowedHeaders: [
+       'Content-Type',
+       'Authorization',
+       'Referer',  // Autoriser l'en-tête Referer si nécessaire
+       'sec-ch-ua',
+       'sec-ch-ua-mobile',
+       'sec-ch-ua-platform',
+       'User-Agent'
+   ],
+   credentials: true // Si vous utilisez des cookies ou des sessions
+};
+
+app.use(cors(corsOptions));
 
 
 connectdb()
