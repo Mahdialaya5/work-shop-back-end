@@ -25,6 +25,10 @@ app.use("/uploads",express.static(__dirname+"/uploads"))
 app.use('/api/user',RoutesUser)
 app.use('/api/product',RoutesProduct)
 
+app.get('*', (req, res) => {
+   res.sendFile(path.join(__dirname, './client/build/index.html'));
+ });
+ 
 app.use(function(req, res, ){
    res.status(404).send('not found!')})
 
