@@ -9,10 +9,15 @@ const cors = require("cors");
 var cookieParser = require('cookie-parser')
 
 
-const corsOptions = {
-   origin: 'https://front-app-beta.vercel.app/',  
-   credentials: true,      
-}
+app.use((req, res, next) => {
+   res.set({
+       "Access-Control-Allow-Origin": "*",
+       "Access-Control-Allow-Methods": "*",
+       "Access-Control-Allow-Headers": "'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token'",
+   });
+
+   next();
+});
 
 
 connectdb()
