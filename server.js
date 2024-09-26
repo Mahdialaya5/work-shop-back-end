@@ -8,19 +8,16 @@ const RoutesProduct=require('./Routes/RoutesProduct')
 const cors = require("cors");
 var cookieParser = require('cookie-parser')
 
-
-
-
 const corsOptions = {
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-  optionsSuccessStatus: 200 
-};
-
-
+   origin: 'https://front-9hfmdimtl-mahdialaya5s-projects.vercel.app', 
+   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+   allowedHeaders: ['Content-Type', 'Authorization'], 
+   credentials: true, 
+ };
+ 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
+
 connectdb()
 app.use(cookieParser())
 app.use(express.json())
