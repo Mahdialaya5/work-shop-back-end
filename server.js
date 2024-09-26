@@ -8,27 +8,22 @@ const RoutesProduct=require('./Routes/RoutesProduct')
 const cors = require("cors");
 var cookieParser = require('cookie-parser')
 
+const cors = require('cors');
+
+
 const corsOptions = {
-   origin: 'https://front-app-beta.vercel.app/', // Frontend
-   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-   allowedHeaders: [
-       'Content-Type',
-       'Authorization',
-       'Referer',  // Autoriser l'en-tête Referer si nécessaire
-       'sec-ch-ua',
-       'sec-ch-ua-mobile',
-       'sec-ch-ua-platform',
-       'User-Agent'
-   ],
-   credentials: true // Si vous utilisez des cookies ou des sessions
+  origin: 'https://front-9hfmdimtl-mahdialaya5s-projects.vercel.app', 
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
 
 
+
+
 connectdb()
 app.use(cookieParser())
-app.use(cors(corsOptions))
+
 app.use(express.json())
 app.use("/uploads",express.static(__dirname+"/uploads"))
 
