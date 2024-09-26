@@ -19,8 +19,8 @@ const corsOptions = {
 };
 
 
-//app.use(cors(corsOptions));
-
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 connectdb()
 app.use(cookieParser())
 app.use(express.json())
