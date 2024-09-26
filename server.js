@@ -12,14 +12,14 @@ const cors = require('cors');
 
 
 const corsOptions = {
-  origin: 'https://front-9hfmdimtl-mahdialaya5s-projects.vercel.app/',
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
   optionsSuccessStatus: 200 
 };
 
 
-//app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 
 
