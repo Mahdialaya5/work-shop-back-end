@@ -8,7 +8,7 @@ const RoutesProduct=require('./Routes/RoutesProduct')
 const cors = require("cors");
 var cookieParser = require('cookie-parser')
 
-const cors = require('cors');
+
 
 
 const corsOptions = {
@@ -19,10 +19,7 @@ const corsOptions = {
 };
 
 
-app.use(cors(corsOptions));
-
-
-
+//app.use(cors(corsOptions));
 
 connectdb()
 app.use(cookieParser())
